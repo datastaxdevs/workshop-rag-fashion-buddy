@@ -15,11 +15,12 @@ Learn how to build an app end-to-end application with multi-modal retrieval augm
 - [Frequently asked questions](#frequently-asked-questions)
 - [Materials for the Session](#materials-for-the-session)
 
-[**LAB1 - Database Initialization**](#)
+[**LAB1 - Environment Setup**](#)
 - [1.1 - Create Astra Account](#)
 - [1.2 - Create Astra Database](#)
 - [1.3 - Create VertexAI account](#)
-- [1.4 - VertexAI Studio](#)
+- [1.4 - Get your credentials](#)
+- [1.5 - VertexAI Studio](#)
 
 [**LAB2 - Google Collab**](#)
 - [2.1 - Run Google Collab](#)
@@ -93,7 +94,7 @@ we have you covered. In this repository, you'll find everything you need for thi
 ----
 
 
-## LAB1 - Database Initialization
+## LAB1 - Environment Setup
 
 ### 1.1 - Create Astra Account
 
@@ -138,7 +139,44 @@ To get a token click the `[Generate Token]` button on the right. It will generat
 
 ### 1.4 - Create VertexAI account
 
+https://console.cloud.google.com/
+
+
 ### 1.5 - VertexAI Studio
+
+- Create a new project by clicking on the `Select a project` dropdown and then clicking on `New Project`
+
+![](assets/vertex-01.png)
+
+- Name your project and click on `Create`
+
+![](assets/vertex-02.png)
+
+- Make sure to select the project, then in the navigation menu, click on `Vertex AI`.
+
+![](assets/vertex-03.png)
+
+![](assets/vertex-04.png)
+
+- Enable all Api for Vertex AI (make sure to have your billing account or free credit setup_)
+
+![](assets/vertex-05.png)
+
+- You should agree with the condition
+
+![](assets/vertex-06.png)
+
+- And then you should be able to access the Vertex AI Studio
+
+![](assets/vertex-07.png)
+
+- Select `Try Gemini` 
+
+![](assets/vertex-08.png)
+
+- Here we can pick a multi-modal model to use for our application
+
+![](assets/vertex-09.png)
 
 ## LAB2 - Google Collab
 
@@ -151,8 +189,6 @@ To get a token click the `[Generate Token]` button on the right. It will generat
 ### 3.1 - Setup your environment
 ### 3.2 - Run the application
 ### 3.3 - Deploy the application
-
-
 
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1_n-QZyuP898JNaX7RDnCmw9lkibgEuP-#scrollTo=RUbC-NIgkSR9)
