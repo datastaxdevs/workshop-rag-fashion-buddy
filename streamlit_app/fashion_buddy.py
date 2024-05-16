@@ -10,14 +10,7 @@ import json
 dotenv_path = find_dotenv()
 load_dotenv(dotenv_path)
 
-google_credentials = dict(st.secrets["google_credentials"])
-# print(dict(google_credentials))
-
-with open(".streamlit/secrets.json", "w") as outfile: 
-    json.dump(google_credentials, outfile)
-
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = ".streamlit/secrets.json"
-
+#os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = ".streamlit/secrets.json"
 
 # Use Gemini Pro Vision as our LLM + Embedding Model
 vertexai.init(project=st.secrets["GCP_PROJECT_ID"])
@@ -139,7 +132,7 @@ def main():
 
     # Add DataStax Logo:
     with st.sidebar:
-         st.image('streamlit_app/Assets/datastax-logo.svg')
+         st.image('/workspaces/workshop-rag-fashion-buddy/streamlit_app/Assets/datastax-logo.svg')
          st.text('')
 
     # Add Clothing Filters header
@@ -160,7 +153,7 @@ def main():
         st.write("⬇️ Download an example image:⬇️")
         st.download_button(
             label='Download Image',
-            data=open('streamlit_app/Assets/example-outfit.jpeg', 'rb').read(),
+            data=open('/workspaces/workshop-rag-fashion-buddy/streamlit_app/Assets/example-outfit.jpeg', 'rb').read(),
             file_name='example-outfit.jpeg',
             mime='image/jpeg'
         )

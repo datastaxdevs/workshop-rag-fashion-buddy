@@ -1,6 +1,5 @@
 # Workshop RAG 👢Fashion Buddy 🧥 !
 
-[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/datastaxdevs/workshop-rag-fashion-buddy)
 [![License Apache2](https://img.shields.io/hexpm/l/plug.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 [![Discord](https://img.shields.io/discord/685554030159593522)](https://discord.com/widget?id=685554030159593522&theme=dark)
 
@@ -212,37 +211,59 @@ You'll learn:
 
 ![](assets/streamlit.png)
 
-To make life easier, we'll use the awesome Github Codespace functionality. Github offers you a completely integrated developer experience and resources to get started quickly. How?
+let's get started with coding. Click `Create codespace on main` as follows:
 
-1. Open the [build-your-own-rag-agent](https://github.com/michelderu/build-your-own-rag-agent) repository
-2. Click on `Use this template`->`Ceate new repository` as follows:
-
-    ![codespace](./assets/create-new-repository.png)
-
-3. Now select your github account and name the new repository. Ideally also set the description. Click `Create repository`
-
-    ![codespace](./assets/repository-name.png)
-
-4. Cool! You just created a copy in your own Gihub account! Now let's get started with coding. Click `Create codespace on main` as follows:
-
-    ![codespace](./assets/create-codespace.png)
+![codespace](./assets/create-codespace.png)
 
 And you're ready to rock and roll! 🥳  
 As Codespaces creates your dev environment based on `Python 3.11`, it will automatically install the Python dependecies from `requirements.txt`. So, no need to `pip install` anything here. It will also set up prt forwarding so you can access subsequent Streamlit apps from anywhere.  
 When the codespace start up, it will run a Streamlit Hello World app for you which shows some of the awesome capabilities of this UI framework. When you're done playing, just click `ctrl-c` in the `terminal` to stop running it.
 
+
 ### 3.2 - Run the application
+
+- Access the folder
 
 ```bash
 cd streamlit_app
-pip install -r requirements.txt
-streamlit fashion_buddy.py
 ```
 
+- Copy your Service account files in 
+
+```console
+/workspaces/workshop-rag-fashion-buddy/streamlit_app/.streamlit/secret.json
+```
+
+- Define the environment Variable
+
+```console
+export GOOGLE_APPLICATION_CREDENTIALS="/workspaces/workshop-rag-fashion-buddy/streamlit_app/.streamlit/secret.json"
+```
+
+- Open and change the file `secrets.toml`
+
+```console
+GCP_PROJECT_ID= ""
+
+# Astra DB secrets
+ASTRA_API_ENDPOINT = ""
+ASTRA_DB_TOKEN = ""
+```
+
+- Now run the application
+
+```
+streamlit run fashion_buddy.py
+```
+
+  ![Streamlit](./assets/running.png)
+
 ### 3.3 - Deploy the application
+
 In this step we'll deploy your awesome app to the internet so everyone can enjoy your cool work and be amazed!
 
 - Set up your Streamlit account
+
 If you have not do so before, please set up your account on Streamlit. When you already have an account skip to the next step and deploy the app.
 
 1. Head over to [Streamlit.io](https://streamlit.io) and clikc `Sign up`. Then select `Continue with Github`:
@@ -279,28 +300,6 @@ Click Deploy! Wait for a bit and your app is online for everyone to use!
 
 ⛔️ Be aware that this app is public and uses your OpenAI account which will incur cost. You'll want to shield it off by clicking `Settings->Sharing` in the main screen and define the email addresses that are allowed access. In order to enable this, link your Google account.
 
-# Python environments
-In case you want to run all of the above locally, it's useful to create a *Virtual Environment*. Use the below to set it up:
-```
-python3 -m venv myenv
-```
-Then activate it as follows:
-```
-source myenv/bin/activate   # on Linux/Mac
-myenv\Scripts\activate.bat  # on Windows
-```
-Now you can start installing packages:
-```
-pip3 install -r requirements.txt
-```
-In order to check which packages have been installed:
-```
-pip3 freeze
-```
-Which you can save to requirements.txt if you want:
-```
-pip3 freeze > requirements.txt
-```
 
 
 
