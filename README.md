@@ -15,21 +15,21 @@ Learn how to build an app end-to-end application with multi-modal retrieval augm
 - [Frequently asked questions](#frequently-asked-questions)
 - [Materials for the Session](#materials-for-the-session)
 
-[**LAB1 - Environment Setup**](#)
-- [1.1 - Create Astra Account](#)
-- [1.2 - Create Astra Database](#)
-- [1.3 - Create VertexAI account](#)
-- [1.4 - Get your credentials](#)
-- [1.5 - VertexAI Studio](#)
+[**LAB1 - Environment Setup**](#lab1---environment-setup)
+- [1.1 - Create Astra Account](#11---create-astra-account)
+- [1.2 - Create Astra Database](#12---create-astra-database)
+- [1.3 - Create VertexAI account](#13-get-your-credentials)
+- [1.4 - Get your credentials](#14---create-vertexai-account)
+- [1.5 - VertexAI Studio](#15---vertexai-studio)
 
-[**LAB2 - Google Collab**](#)
-- [2.1 - Run Google Collab](#)
-- [2.2 - Vector Search in AstraDB](#)
+[**LAB2 - Google Collab**](#lab2---google-collab)
+- [2.1 - Run Google Collab](#21---run-google-collab)
+- [2.2 - Vector Search in AstraDB](#22---vector-search-in-astradb)
 
-[**LAB3 - Streamlit application**](#)
-- [3.1 - Setup your environment](#)
-- [3.2 - Run the application](#)
-- [3.3 - Deploy the application](#)
+[**LAB3 - Streamlit application**](#lab3---streamlit-application)
+- [3.1 - Setup your environment](#31---setup-your-environment)
+- [3.2 - Run the application](#32---run-the-application)
+- [3.3 - Deploy the application](#33---deploy-the-application)
 
 ## HouseKeeping
 
@@ -92,8 +92,6 @@ we have you covered. In this repository, you'll find everything you need for thi
 - [Discord chat](https://dtsx.io/discord)
 
 ----
-
-
 ## LAB1 - Environment Setup
 
 ### 1.1 - Create Astra Account
@@ -103,7 +101,6 @@ we have you covered. In this repository, you'll find everything you need for thi
 ![](https://awesome-astra.github.io/docs/img/astra/astra-signin-github-0.png)
 
 ### 1.2 - Create Astra Database
-
 
 > If you are creating a new account, you will be brought to the DB-creation form directly.
 
@@ -136,11 +133,9 @@ To connect to your database, you need the API Endpoint and a token. The api endp
 
 To get a token click the `[Generate Token]` button on the right. It will generate a token that you can copy to your clipboard.
 
-
 ### 1.4 - Create VertexAI account
 
 https://console.cloud.google.com/
-
 
 ### 1.5 - VertexAI Studio
 
@@ -181,19 +176,7 @@ https://console.cloud.google.com/
 ## LAB2 - Google Collab
 
 ### 2.1 - Run Google Collab 
-### 2.2 - Vector Search in AstraDB
 
-
-## LAB3 - Streamlit application
-
-### 3.1 - Setup your environment
-### 3.2 - Run the application
-### 3.3 - Deploy the application
-
-
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1_n-QZyuP898JNaX7RDnCmw9lkibgEuP-#scrollTo=RUbC-NIgkSR9)
-
-### Credentials
 * Download your service account key as a json file from Google Cloud console. Record the path to this json file. [See instructions here](https://cloud.google.com/iam/docs/keys-create-delete)
 * Create a `.env` file in the same directory as `fashion_buddy.py`
 * Copy/paste the following into your `.env` file and replace with your environment variables.
@@ -203,6 +186,124 @@ ASTRA_DB_TOKEN= "AstraCS:..."
 ASTRA_API_ENDPOINT= "https://<DATABASE_ID>-<REGION>.apps.astra.datastax.com"
 GOOGLE_APPLICATION_CREDENTIALS_PATH= <./PATH/TO/YOUR/GOOGLE_SERVICE_ACCOUNT_KEY.json>
 ```
+
+
+To kick this workshop off, we'll first try the concepts in a [Colab Notebook](https://colab.research.google.com/drive/1CwXdjFvJHQaCphtlNWrcviWbUpTvtbQX?authuser=0#scrollTo=Gr9FQy3o64TW)
+
+This notebook shows the steps to take to use the Astra DB Vector Store as a means to make LLM interactions meaningfull and without hallucinations. The approach taken here is Retrieval Augmented Generation.
+
+You'll learn:
+
+1. About the content in a CNN dataset (we'll use the news article about Daniel Radcliffe in this example)
+2. How to interact with the OpenAI Chat Model without providing this context
+3. How to load this context into Astra DB Vector Store
+4. How to run a semantic similarity search on Astra DB Vector Store
+5. How to use this context with the OpenAI Chat Model
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1CwXdjFvJHQaCphtlNWrcviWbUpTvtbQX)
+
+### 2.2 - Vector Search in AstraDB
+
+## LAB3 - Streamlit application
+
+### 3.1 - Setup your environment
+
+- Follow the steps outlined [here](https://docs.streamlit.io/streamlit-community-cloud/get-started/quickstart).
+
+![](assets/streamlit.png)
+
+To make life easier, we'll use the awesome Github Codespace functionality. Github offers you a completely integrated developer experience and resources to get started quickly. How?
+
+1. Open the [build-your-own-rag-agent](https://github.com/michelderu/build-your-own-rag-agent) repository
+2. Click on `Use this template`->`Ceate new repository` as follows:
+
+    ![codespace](./assets/create-new-repository.png)
+
+3. Now select your github account and name the new repository. Ideally also set the description. Click `Create repository`
+
+    ![codespace](./assets/repository-name.png)
+
+4. Cool! You just created a copy in your own Gihub account! Now let's get started with coding. Click `Create codespace on main` as follows:
+
+    ![codespace](./assets/create-codespace.png)
+
+And you're ready to rock and roll! 🥳  
+As Codespaces creates your dev environment based on `Python 3.11`, it will automatically install the Python dependecies from `requirements.txt`. So, no need to `pip install` anything here. It will also set up prt forwarding so you can access subsequent Streamlit apps from anywhere.  
+When the codespace start up, it will run a Streamlit Hello World app for you which shows some of the awesome capabilities of this UI framework. When you're done playing, just click `ctrl-c` in the `terminal` to stop running it.
+
+### 3.2 - Run the application
+
+```bash
+cd streamlit_app
+pip install -r requirements.txt
+streamlit fashion_buddy.py
+```
+
+### 3.3 - Deploy the application
+In this step we'll deploy your awesome app to the internet so everyone can enjoy your cool work and be amazed!
+
+- Set up your Streamlit account
+If you have not do so before, please set up your account on Streamlit. When you already have an account skip to the next step and deploy the app.
+
+1. Head over to [Streamlit.io](https://streamlit.io) and clikc `Sign up`. Then select `Continue with Github`:
+
+    ![Streamlit](./assets/streamlit-0.png)
+
+2. Log in using your Github credentials:
+
+    ![Streamlit](./assets/streamlit-1.png)
+
+3. Now authorize Streamlit:
+
+    ![Streamlit](./assets/streamlit-2.png)
+
+4. And set up your account:
+
+    ![Streamlit](./assets/streamlit-3.png)
+
+### Deploy your app
+
+On the main screen, when logged in, click `New app`.
+
+1. When this is your first deployment, provide additional permissions:
+
+    ![Streamlit](./assets/streamlit-4.png)
+
+2. Now define your application settings. Use YOUR repository name, and name the Main file path as `app_7.py`. Pick a cool App URL as you'll app will be deployed to that:
+
+    ![Streamlit](./assets/streamlit-5.png)
+
+3. Click on Advanced, select Python 3.11 and copy-paste the contents from your `secrets.toml`.
+
+Click Deploy! Wait for a bit and your app is online for everyone to use!
+
+⛔️ Be aware that this app is public and uses your OpenAI account which will incur cost. You'll want to shield it off by clicking `Settings->Sharing` in the main screen and define the email addresses that are allowed access. In order to enable this, link your Google account.
+
+# Python environments
+In case you want to run all of the above locally, it's useful to create a *Virtual Environment*. Use the below to set it up:
+```
+python3 -m venv myenv
+```
+Then activate it as follows:
+```
+source myenv/bin/activate   # on Linux/Mac
+myenv\Scripts\activate.bat  # on Windows
+```
+Now you can start installing packages:
+```
+pip3 install -r requirements.txt
+```
+In order to check which packages have been installed:
+```
+pip3 freeze
+```
+Which you can save to requirements.txt if you want:
+```
+pip3 freeze > requirements.txt
+```
+
+
+
 
 
 
